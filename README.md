@@ -19,16 +19,17 @@ integrated with Google Maps for precise navigation.
 - Environment Management: Python-dotenv for secure credential handling.
 
 ## Installation & Setup
-    1. ```bash
-    2. git clone ("repo")
-    3. After installation, the user must log in to /admin and add objects with photos
-    4. Create a .env file and populate it with your DB credentials (see settings.py for required keys).
-    5. pip install -r requirements.txt
-    6. python manage.py migrate
-    7. python manage.py runserver
+- ```bash
+- git clone 
+- After installation, the user must log in to /admin and add objects with photos
+- Create a .env file and populate it with your DB credentials (see settings.py for required keys).
+- pip install -r requirements.txt
+- python manage.py migrate
+- python manage.py runserver
 
 ## Future Improvements
-    1. Integration with a Weather API for real-time fishing conditions.
-    2. User-submitted fishing reports with photo uploads.
-    3. Interactive "Catch Map" using Leaflet.js.
+- Integration with a Weather API for real-time fishing conditions.
+- User-submitted fishing reports with photo uploads.
+- Interactive "Catch Map" using Leaflet.js.
+
 
