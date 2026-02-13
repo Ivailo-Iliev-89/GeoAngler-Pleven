@@ -1,4 +1,4 @@
-/*---Navbar---*/
+/*-- Navbar --*/
 .navbar {
     background-color: #1a3c34;
     display: flex;
@@ -19,8 +19,15 @@
     align-items: center;
     gap: 10px;
 }
-.logo a:hover { color: #ffca28; transition: 0.3s; }
-.nav-links { list-style: none; display: flex; gap: 25px; }
+.logo a:hover {
+    color: #ffca28;
+    transition: 0.3s;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -30,7 +37,7 @@
 }
 .nav-links a:hover { color: #bdc3c7; }
 
-/*---Dropdawn menu---*/
+/*-- Dropdown menu --*/
 .dropdown {position: relative;}
 .dropdown-content {
     display: none;
@@ -49,7 +56,10 @@
     border-bottom: 1px solid #eee;
     text-decoration: none;
 }
-.dropdown-content a:hover { background-color: #e9f5f2; color: #1a3c34; }
+.dropdown-content a:hover {
+    background-color: #e9f5f2;
+    color: #1a3c34;
+}
 .dropdown-header {
     background-color: #f8f9fa;
     padding: 8px 16px;
@@ -58,9 +68,11 @@
     text-transform: uppercase;
     font-weight: bold;
 }
-.dropdown:hover .dropdown-content { display: block; } /* Добавих това за автоматично отваряне */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
-/*---Footer Section---*/
+/*-- Footer Section --*/
 .site-footer {
     background-color: #1a3c34;
     color: #ffffff;
@@ -76,7 +88,11 @@
     gap: 30px;
     padding: 0 20px;
 }
-.footer-section h4 { color: #ffca28; margin-bottom: 20px; font-size: 1.2rem; }
+.footer-section h4 {
+    color: #ffca28;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
 .footer-section ul {list-style: none; padding: 0;}
 .footer-section ul li { margin-bottom: 10px; }
 .footer-section a { color: #bdc3c7; text-decoration: none; transition: 0.3s; }
