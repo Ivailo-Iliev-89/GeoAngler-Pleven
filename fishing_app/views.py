@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import FishingPlace, Method, Fish
 
+# Must change the all def with class based-views , for more practice
+# from django.views.generic import ListView,DetailView, DeleteView, UpdateView, CreateView
+
 
 # The home page
 def index(request):

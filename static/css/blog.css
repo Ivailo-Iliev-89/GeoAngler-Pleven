@@ -1,0 +1,142 @@
+/*--- Blog & Reports Styles ---*/
+
+/* Контейнер за детайлната страница */
+.post-detail-container, .post-full-view {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Мета информация (Автор, Дата, Локация) */
+.post-meta, .post-detail-container header p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.post-meta a, .post-detail-container header a {
+    color: #1a3c34;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.post-meta a:hover {
+    text-decoration: underline;
+}
+
+/* Голямото изображение в поста */
+.post-image-large, .post-main-image {
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.post-image-large img, .post-main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Текстът на репортажа */
+.post-content, .post-full-content {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    text-align: justify;
+}
+
+/* Секция с коментари */
+.comments-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #ffca28;
+}
+
+.comment {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #1a3c34;
+}
+
+.comment strong {
+    color: #1a3c34;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comment p {
+    margin: 0;
+    font-size: 1rem;
+}
+/*--- Reports Grid in Place Detail ---*/
+.user-reports-container {
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.section-title {
+    text-align: center;
+    color: #1a3c34;
+    margin-bottom: 30px;
+}
+
+.reports-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px; 
+    margin-top: 20px;
+}
+
+.report-card {
+    border: 1px solid #ddd; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    background: #fff; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.report-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.report-card img {
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover;
+}
+
+.report-card-body {
+    padding: 15px;
+}
+
+.report-card-body h4 {
+    margin: 0 0 10px 0; 
+    color: #1a3c34;
+    text-align: left; /* Заглавието на малката карта да е вляво */
+}
+
+.report-meta {
+    font-size: 0.85em; 
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.report-text {
+    font-size: 0.95em;
+    color: #444;
+    line-height: 1.5;
+}

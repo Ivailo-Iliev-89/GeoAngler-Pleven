@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'fishing_app',
+    'blog',
 ]
 
 REST_FRAMEWORK = {

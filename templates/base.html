@@ -1,3 +1,4 @@
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -5,9 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fishing Atlas</title>
-    {% load static %}
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@300;400&family=Montserrat:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fishing_cards.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fishing_details.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
 
@@ -84,8 +88,7 @@
     
     <div class="footer-bottom">
         <p>&copy; 2026 PlevenFishing.<br/>
-            All rights reserved.<br/>
-            Random!</p>
+            All rights reserved. Random!</p>
     </div>
 </footer>
 

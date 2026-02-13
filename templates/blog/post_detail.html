@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<article class="post-detail-container">
+    
+    <header>
+        <h1>{{ post.title }}</h1>
+        <p>
+            Share: <strong>{{ post.author.username }}</strong> | 
+            Date: {{ post.created_on|date:"d F Y" }} | 
+            Fish Spot: <a href="{% url 'place_detail' post.location.slug %}">{{ post.location.name }}</a>
+        </p>
+    </header>
+
+    {% if post.image %}
+    <div class="post-main-image">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+    </div>
+    {% endif %}
+
+    <div class="post-full-content">
+        {{ post.content|linebreaks }}
+    </div>
+
+    <div>
+        <a href="{% url 'place_detail' post.location.slug %}" class="btn-more">
+            ← Back from {{ post.location.name }}
+        </a>
+    </div>
+
+</article>
+{% endblock %}
