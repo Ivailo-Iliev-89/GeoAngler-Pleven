@@ -28,9 +28,11 @@
         <div class="info-sidebar">
             <div class="info-box">
                 <h4>⚓ Appropriate methods:</h4>
-                <ul class="nav-links" style="flex-direction: column; gap: 5px;">
+                <ul class="nav-links">
                     {% for method in place.methods.all %}
-                        <li><a href="{% url 'method_detail' method.slug %}" style="color: #1a3c34;">{{ method.name }}</a></li>
+                        <li>
+                            <a href="{% url 'method_detail' method.slug %}">{{ method.name }}</a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>

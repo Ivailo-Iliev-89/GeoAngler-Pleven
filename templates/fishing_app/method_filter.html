@@ -2,13 +2,12 @@
 {% block content %}
 {% load static %}
 
-<div class="static-page-container">
+<div class="method-page-container">
     <div class="method-header">
-
         <div class="method-icon">
+
             {% with "images/"|add:method.slug|add:".jpg" as image_path %}
                 <img src="{% static image_path %}" alt="{{ method.name }}" 
-                style="width: 250px; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
             {% endwith %}
         </div>
 
