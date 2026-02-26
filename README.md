@@ -32,8 +32,7 @@ It bridges the gap between static location data and dynamic user needs through a
 
 - ```bash
 - git clone https://github.com/ivailoiliev89-netizen/Pleven-Fishing.git
-- After installation, the user must log in to /admin and add objects with photos.
-- Create a .env file and populate it with your DB credentials (see settings.py for required keys).
+- **Create** a .env file and populate it with your DB credentials (see settings.py for required keys)
 - pip install -r requirements.txt
 - python manage.py makemigrations 
 - python manage.py migrate
@@ -51,5 +50,6 @@ It bridges the gap between static location data and dynamic user needs through a
 
 - **Integration** with a Weather API for real-time fishing conditions.
 - **Interactive** "Catch Map" using Leaflet.js.
+
 
 
