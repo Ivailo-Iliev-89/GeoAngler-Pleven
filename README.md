@@ -40,14 +40,15 @@ It bridges the gap between static location data and dynamic user needs through a
 - python manage.py createsuperuser
 - python manage.py runserver
 
-  ## 📖 Usage
+  ##  Usage
   
-* **Explore Locations**: Navigate through the curated database of fishing spots in the Pleven region.
-* **Geospatial Navigation**: Click on the embedded Google Maps links to get precise GPS directions to each spot.
-* **Filter by Method**: Use the dynamic filter buttons to find spots suitable for specific techniques like "Spinning" or "Feeder".
-* **Manage Content**: Access the Django Admin panel to add new locations, update photos, or manage fishing reports.
+- **Explore Locations**: Navigate through the curated database of fishing spots in the Pleven region.
+- **Geospatial Navigation**: Click on the embedded Google Maps links to get precise GPS directions to each spot.
+- **Filter by Method**: Use the dynamic filter buttons to find spots suitable for specific techniques like "Spinning" or "Feeder".
+- **Manage Content**: Access the Django Admin panel to add new locations, update photos, or manage fishing reports.
 
 * ## Future Improvements
 
-- Integration with a Weather API for real-time fishing conditions.
-- Interactive "Catch Map" using Leaflet.js.
+- **Integration** with a Weather API for real-time fishing conditions.
+- **Interactive** "Catch Map" using Leaflet.js.
+
