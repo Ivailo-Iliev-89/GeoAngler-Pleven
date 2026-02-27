@@ -1,4 +1,4 @@
-# PlevenFishing Atlas
+# GeoAngler Pleven
 
 ### A Full-Stack Geospatial Directory for Anglers in Pleven Region, Bulgaria
 
@@ -57,5 +57,6 @@ It bridges the gap between static location data and dynamic user needs through a
 
 - ***Integration***  with a ***Weather API*** for real-time fishing conditions..
 - ***Interactive***  "Catch Map" using ***Leaflet.js***..
+
 
 
