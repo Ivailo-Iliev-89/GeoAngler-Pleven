@@ -19,7 +19,7 @@ It bridges the gap between static location data and dynamic user needs through a
 
 - ***Backend*** :  Python , Django 
 - ***Database*** :  PostgreSQL
-- ***Frontend*** :  HTML, CSS (Flexbox and Grid), JavaScript
+- ***Frontend*** :  HTML, CSS ( Flexbox and Grid ), JavaScript
 - ***Environment Management*** :  Python-dotenv for secure credential handling.
 - ***API*** :  Google Maps JavaScript API
 
