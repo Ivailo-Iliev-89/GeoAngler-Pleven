@@ -55,7 +55,7 @@ It bridges the gap between static location data and dynamic user needs through a
 
 ## Future Improvements
 
-- ***Integration***  with a ***Weather API*** for real-time fishing conditions.
-- ***Interactive***  "Catch Map" using ***Leaflet.js***.
+- ***Integration***  with a ***Weather API*** for real-time fishing conditions..
+- ***Interactive***  "Catch Map" using ***Leaflet.js***..
 
 
