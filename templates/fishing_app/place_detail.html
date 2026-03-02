@@ -6,9 +6,7 @@
 
     <div class="detail-header">
         <h1>{{ place.name }}</h1>
-        <p class="location-tag">
-            📍 Region: {{ place.region }} / Type: {{ place.get_place_type_display }}
-        </p>
+        <p class="location-tag"> Region : {{ place.region }} / Type : {{ place.get_place_type_display }}</p>
     </div>
 
     <hr class="map-divider"/>
@@ -63,7 +61,7 @@
 <hr class="map-divider"/>
 
 <div class="user-reports-container">
-    <h3 class="section-title">📸 Fishing Reports & Photos for {{ place.name }}</h3>
+    <h3 class="section-title"> Fishing Reports & Photos for {{ place.name }}</h3>
     
     <div class="reports-grid">
         {% for post in place.posts.all %} 

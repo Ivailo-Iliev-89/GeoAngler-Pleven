@@ -1,21 +1,30 @@
-/*-- Main Hero Section --*/
+/*-- Hero Section --*/
 .hero-section {
-    height: 70vh;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
+    text-transform: capitalize;
+    color: rgb(142, 198, 247);
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/static/images/main.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    min-height: 300px;
 }
 .hero-section h1 {
     font-size: 4rem;
     color: #ffca28;
     margin-bottom: 10px;
+    font-family:sans-serif;
+    text-transform: capitalize;
+    text-align: center;
 }
 .hero-overlay {
     background: rgba(0, 0, 0, 0.5);
@@ -27,21 +36,28 @@
     flex-direction: column;
     justify-content: center;
 }
+
 /*-- Places at main page-- */
 .places-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px));
     gap: 25px;
     padding: 20px;
+    justify-content: start;
 }
 .place-card {
-    background: white;
+    background:#edede9;
+    color:#023047;
+    text-align: center;
     border-radius: 15px;
     overflow: hidden; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: 0.3s;
     display: flex;
     flex-direction: column;
+    font-family: cursive;
+    width: 300px;
+    height: 100%;
 }
 .place-card:hover { transform: translateY(-5px); }
 .place-image {
@@ -64,16 +80,25 @@
     border-radius: 20px;
     font-size: 1rem;
 }
-.place-content { padding: 15px; }
+.place-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    margin-top: 10px;
+    padding: 15px;
+}
 
 /*-- Buttons --*/
 .btn-more {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #1a3c34; color: white;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #1a3c34; 
+    color: yellowgreen;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    text-align: right;
 }
 .btn-primary {
     background-color: #ffca28; 
