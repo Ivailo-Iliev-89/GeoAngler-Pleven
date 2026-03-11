@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="discover-container">
+    <section class="search-section">
+        <h1>Find your next fishing adventure</h1>
+        <form action="{% url 'search_results' %}" method="get" class="search-bar">
+            <input type="text" name="q" placeholder="Search by fish, location or method..." required>
+            <button type="submit">🔍 Search</button>
+        </form>
+    </section>
+
+    <div class="quick-filters">
+        <div class="filter-group">
+            <h3>Explore by Water Type</h3>
+            <div class="filter-grid">
+                <a href="{% url 'index' %}?type=river" class="fishing-item">Rivers</a>
+                <a href="{% url 'index' %}?type=lake" class="fishing-item">Lakes</a>
+                <a href="{% url 'index' %}?type=swamp" class="fishing-item">Swamps</a>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <h3>Master of Techniques</h3>
+            <div class="filter-grid">
+                <a href="/method/bolognese" class="fishing-item method-alt">Bolognese</a>
+                <a href="/method/feeder/" class="fishing-item method-alt">Feeder</a>
+                <a href="/method/float/" class="fishing-item method-alt">Float</a>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <section class="recommended-section">
+        <h2>Recommended Spots</h2>
+
+        <div class="explorer-grid">
+            {% for place in recommended %}
+            <div class="explorer-card">
+                <h3>{{ place.name }}</h3>
+                <a href="{% url 'place_detail' place.slug %}" class="btn-more">Explore</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,24 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const dropdowns = document.querySelectorAll('.dropdown-toggle');
+    const dropdowns = document.querySelectorAll('.dropdown');
 
     dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('click', function(e) {
-            e.preventDefault();
-            const content = this.nextElementSibling;
-           
-            document.querySelectorAll('.dropdown-content').forEach(el => {
-                if (el !== content) el.classList.remove('show');
-            });
+        const content = dropdown.querySelector('.dropdown-content');
+        let timeout;
 
-            content.classList.toggle('show');
+        dropdown.addEventListener('mouseenter', function() {
+            clearTimeout(timeout);
+            content.classList.add('show');
+        });
+
+        dropdown.addEventListener('mouseleave', function() {
+            timeout = setTimeout(() => {
+                content.classList.remove('show');
+            }, 500); 
         });
     });
-
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropdown-toggle')) {
-            document.querySelectorAll('.dropdown-content').forEach(el => {
-                el.classList.remove('show');
-            });
-        }
-    }
 });

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block  content %}
+<div class="search-container">
+
+    <div class="search-toolbar">
+        <h2>Results for: "{{ query }}"</h2>
+        <p>Found {{ results|length }} fishing spots.</p>
+    </div>
+
+    <div class="search-nav-buttons">
+        <a href="{% url 'discover' %}" class="nav-btn btn-new-search">🔍 New Search</a>
+        <a href="{% url 'index' %}" class="nav-btn btn-go-home">Back to home page</a>
+    </div>
+
+    <div class="explorer-grid">
+        {% for place in results %}
+            <div class="explorer-card">
+                <div class="explorer-card-badge">{{ place.category }}</div>
+                <h3>{{ place.name }}</h3>
+                <p>{{ place.description|truncatewords:15 }}</p>
+                <a href="{% url 'place_detail' place.slug %}" class="btn-more">View Spot</a>
+            </div>
+        {% empty %}
+            <div class="places-no-match">
+                <div class="no-match-content">
+                    <p>No spots found matching for your searh.Try someting else ?</p>
+                    <a href="{% url 'discover' %}" class="btn-more">Back to Discovery</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
