@@ -41,12 +41,19 @@
     left: 0;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: absolute;
-    background-color: #ffffff;
+    background-color: #e9f5f2;
     min-width: 200px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     padding-top: 10px;
     border-radius: 4px;
     margin-top: -5px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    /* For Firefox Only--> Scroll Menu */
+    scrollbar-width: thin;
+    scrollbar-color: #1a3c34 #f8f9fa;
 }
 .dropdown-content a {
     color: #333;
@@ -55,13 +62,13 @@
     border-bottom: 1px solid #eee;
     text-decoration: none;
 }
-.dropdown-content a:hover {background-color: #e9f5f2;color: #1a3c34;}
+.dropdown-content a:hover {background-color:#ffca28; color: #1a3c34;}
 .dropdown-content.show {opacity: 1;visibility: visible; transform: translateY(0);}
 .dropdown-header {
     background-color: #f8f9fa;
     padding: 8px 16px;
     font-size: 0.8rem;
-    color: #666;
+    background-color:#1a3c34;
     text-transform: uppercase;
     font-weight: bold;
 }

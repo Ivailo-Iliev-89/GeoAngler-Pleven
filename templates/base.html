@@ -29,18 +29,18 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle">Locations ▾</a>
             <div class="dropdown-content">
-                <div class="dropdown-header">Rivers</div>
-                {% for river in nav_rivers %}
+                <div class="dropdown-header">Top Rivers</div>
+                {% for river in nav_rivers|slice:3 %}
                     <a href="{% url 'place_detail' river.slug %}">{{ river.name }}</a>
                 {% endfor %}
 
-                <div class="dropdown-header">Lakes</div>
-                {% for lake in nav_lakes %}
+                <div class="dropdown-header">Top Lakes</div>
+                {% for lake in nav_lakes|slice:3 %}
                     <a href="{% url 'place_detail' lake.slug %}">{{ lake.name }}</a>
                 {% endfor %}
 
-                <div class="dropdown-header">Swamps</div>
-                {% for swamp in nav_swamps %}
+                <div class="dropdown-header">Top Swamps</div>
+                {% for swamp in nav_swamps|slice:3 %}
                     <a href="{% url 'place_detail' swamp.slug %}">{{ swamp.name }}</a>
                 {% endfor %}
             </div>
@@ -102,9 +102,9 @@
         <div class="footer-section">
             <h4>Contacts</h4>
             <ul>
-                <li>Phone:</br>+359-897-654-321</li>
+                <li>Phone:</br>+359-877-093-177</li>
                 <li>Adress:</br>Pleven City, Bulgaria</li>
-                <li>Email:</br>fishing@geoangler.bg</li>
+                <li>Email:</br>ivailoiliev89@gmail.com</li>
             </ul>
         </div>
     </div>
