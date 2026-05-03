@@ -1,11 +1,12 @@
 FROM python:3.12-slim
 
+ENV PYTHONDONTWRITEBYCODE=1
+ENV PYTHONUNBUFFERED=1
+
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
-    git \
     gcc \
-    python3-dev \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
@@ -15,6 +16,9 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN useradd -m django-user
+CHOWN -R django-user:django-user /app
+
 COPY . .
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+USER django-user

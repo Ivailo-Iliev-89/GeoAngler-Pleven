@@ -1,0 +1,9 @@
+__pycache__
+*.pyc
+test_venv
+.env
+.git
+.gitignore
+db.sqlite3
+static/
+media/
