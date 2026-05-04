@@ -6,7 +6,7 @@ from ..models import FishingPlace, Method
 class FishingPlaceTest(TestCase):
     def setUp(self):
         self.place = FishingPlace.objects.create(
-            name="Gradina Lake", description="Many kind of fishes here")
+            name="Gradina Lake", description="Many kind fishes here")
 
     def test_place_content(self):
         place = self.place
@@ -42,20 +42,23 @@ class FishingViewsTest(TestCase):
         response = self.client.get(reverse('search_results'), {'q': 'carp'})
         self.assertIn(self.place, response.context['results'])
         self.assertEqual(response.status_code, 200)
+<<<<<<< HEAD
 
     def test_search_results_by_fishing_method(self):
         response = self.client.get(reverse('search_results'), {'q': 'Feeder'})
 
         self.assertEqual(response.status_code, 200)
+=======
+>>>>>>> e28e59ddfe74a05f499479753d7b8140b4ae3c30
         self.assertIn(self.place, response.context['results'])
 
     def test_search_no_results(self):
         response = self.client.get(reverse('search_results'), {'q': 'shark'})
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.content['results']), 0)
+        self.assertEqual(len(response.context['results']), 0)
 
     def test_place_detail_404(self):
         response = self.client.get(
-            reverse('place_detail', kwargs={'slug': 'No such place'}))
+            reverse('place_detail', kwargs={'slug':'No such place'}))
         self.assertEqual(response.status_code, 404)
