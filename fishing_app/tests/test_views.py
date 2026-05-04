@@ -6,7 +6,7 @@ from ..models import FishingPlace, Method
 class FishingPlaceTest(TestCase):
     def setUp(self):
         self.place = FishingPlace.objects.create(
-            name="Gradina Lake", description="Many kind of fishes here")
+            name="Gradina Lake", description="Many kind fishes here")
 
     def test_place_content(self):
         place = self.place
