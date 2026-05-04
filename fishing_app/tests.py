@@ -4,11 +4,11 @@ from .models import FishingPlace
 
 class FishingPlaceTest(TestCase):
     def setUp(self):
-        FishingPlace.objects.create(
+        self.place = FishingPlace.objects.create(
             name="Gradina Lake", description="Many kind of fishes here")
 
     def test_place_content(self):
-        place = FishingPlace.objects.get(id=1)
+        place = self.place
         self.assertEqual(place.name, 'Gradina Lake')
         self.assertEqual(place.description, "Many kind fishes here")
 
