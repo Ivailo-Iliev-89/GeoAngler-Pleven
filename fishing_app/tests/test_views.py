@@ -1,17 +1,6 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from ..models import FishingPlace, Method
-
-
-class FishingPlaceTest(TestCase):
-    def setUp(self):
-        self.place = FishingPlace.objects.create(
-            name="Gradina Lake", description="Many kind fishes here")
-
-    def test_place_content(self):
-        place = self.place
-        self.assertEqual(place.name, 'Gradina Lake')
-        self.assertEqual(place.description, "Many kind fishes here")
+from fishing_app.models import FishingPlace, Method
 
 
 class FishingViewsTest(TestCase):
@@ -28,37 +17,30 @@ class FishingViewsTest(TestCase):
 
     def test_index_view_pagination(self):
         response = self.client.get(reverse('index'))
-
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'fishing_app/index.html')
         self.assertContains(response, 'Vit River')
 
     def test_search_results_by_fish_name(self):
         from fishing_app.models import Fish
-
         carp = Fish.objects.create(name='carp')
         self.place.fishes.add(carp)
 
         response = self.client.get(reverse('search_results'), {'q': 'carp'})
-        self.assertIn(self.place, response.context['results'])
         self.assertEqual(response.status_code, 200)
-<<<<<<< HEAD
+        self.assertIn(self.place, response.context['results'])
 
     def test_search_results_by_fishing_method(self):
         response = self.client.get(reverse('search_results'), {'q': 'Feeder'})
-
         self.assertEqual(response.status_code, 200)
-=======
->>>>>>> e28e59ddfe74a05f499479753d7b8140b4ae3c30
         self.assertIn(self.place, response.context['results'])
 
     def test_search_no_results(self):
         response = self.client.get(reverse('search_results'), {'q': 'shark'})
-
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['results']), 0)
 
     def test_place_detail_404(self):
         response = self.client.get(
-            reverse('place_detail', kwargs={'slug':'No such place'}))
+            reverse('place_detail', kwargs={'slug': 'no-such-place'}))
         self.assertEqual(response.status_code, 404)
