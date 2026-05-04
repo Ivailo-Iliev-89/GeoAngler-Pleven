@@ -17,7 +17,7 @@ class FishingPlaceTest(TestCase):
 class FishingViewsTest(TestCase):
     def setUp(self):
         self.client = Client()
-        self.method = Method.objects.create(name="Spining", slug="spining")
+        self.method = Method.objects.create(name="Feeder", slug="feeder")
         self.place = FishingPlace.objects.create(
             name="Vit River",
             slug='vit-river',
@@ -28,17 +28,30 @@ class FishingViewsTest(TestCase):
 
     def test_index_view_pagination(self):
         response = self.client.get(reverse('index'))
+
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'fishing_app/index.html')
         self.assertContains(response, 'Vit River')
 
-    def test_search_results_success(self):
-        response = self.client.get(reverse('search_results'), {'q': 'Vit'})
+    def test_search_results_by_fish_name(self):
+        from fishing_app.models import Fish
+
+        carp = Fish.objects.create(name='carp')
+        self.place.fishes.add(carp)
+
+        response = self.client.get(reverse('search_results'), {'q': 'carp'})
+        self.assertIn(self.place, response.context['results'])
         self.assertEqual(response.status_code, 200)
-        self.assertIn(self.place, response.content['results'])
+
+    def test_search_results_by_fishing_method(self):
+        response = self.client.get(reverse('search_results'), {'q': 'Feeder'})
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(self.place, response.context['results'])
 
     def test_search_no_results(self):
         response = self.client.get(reverse('search_results'), {'q': 'shark'})
+
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.content['results']), 0)
 
