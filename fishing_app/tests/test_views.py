@@ -35,14 +35,14 @@ class FishingViewsTest(TestCase):
     def test_search_results_success(self):
         response = self.client.get(reverse('search_results'), {'q': 'Vit'})
         self.assertEqual(response.status_code, 200)
-        self.assertIn(self.place, response.content['results'])
+        self.assertIn(self.place, response.context['results'])
 
     def test_search_no_results(self):
         response = self.client.get(reverse('search_results'), {'q': 'shark'})
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.content['results']), 0)
+        self.assertEqual(len(response.context['results']), 0)
 
     def test_place_detail_404(self):
         response = self.client.get(
-            reverse('place_detail', kwargs={'slug': 'No such place'}))
+            reverse('place_detail', kwargs={'slug':'No such place'}))
         self.assertEqual(response.status_code, 404)
