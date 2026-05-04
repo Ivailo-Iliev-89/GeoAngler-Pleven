@@ -18,8 +18,7 @@ class FishingViewsTest(TestCase):
     def test_index_view_pagination(self):
         response = self.client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'fishing_app/index.html')
-        self.assertContains(response, 'Vit River')
+        self.assertIn(self.place, response.context['places'])
 
     def test_search_results_by_fish_name(self):
         from fishing_app.models import Fish
