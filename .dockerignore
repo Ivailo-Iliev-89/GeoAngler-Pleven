@@ -7,3 +7,4 @@ test_venv
 db.sqlite3
 static/
 media/
+staticfiles

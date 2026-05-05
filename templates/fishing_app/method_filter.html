@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
 
+{% block content %}
 <div class="method-page-container">
     <div class="method-header">
-        <div class="method-icon">
+        <div class="method-icon-wrapper">
             {% if method.image %}
                 <img src="{{ method.image.url }}" alt="{{ method.name }}" class="method-img-header">
             {% else %}
-                <img src="{% static 'images/default-method.jpg' %}" alt="Default" class="method-img-header">>
+                <img src="{% static 'images/default-method.jpg' %}" alt="Default" class="method-img-header">
             {% endif %}
         </div>
 
@@ -38,7 +38,9 @@
             </div>
         </div>
         {% empty %}
-        <p>No locations have been added for this method yet.<br/>Be the first ?</p>
+        <div class="empty-state">
+            <p>No locations have been added for this method yet.<br/>Be the first?</p>
+        </div>
         {% endfor %}
     </div>
 </div>

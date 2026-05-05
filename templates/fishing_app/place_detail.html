@@ -11,20 +11,20 @@
 
     <hr class="map-divider"/>
 
-    <div class="info-sidebar-top" style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
-        <div class="info-box" style="flex: 1; min-width: 250px;">
-            <h4>⚓ Appropriate methods:</h4>
+    <div class="info-sidebar-top">
+        <div class="info-box top-box">
+            <h4>Appropriate methods:</h4>
             <div class="fish-list">
                 {% for method in place.methods.all %}
                     <span class="fish-item">
-                        <a href="{% url 'method_detail' method.slug %}" style="text-decoration: none; color: inherit;">{{ method.name }}</a>
+                        <a href="{% url 'method_detail' method.slug %}">{{ method.name }}</a>
                     </span>
                 {% endfor %}
             </div>
         </div>
 
-        <div class="info-box" style="flex: 1; min-width: 250px;">
-            <h4>🐟 Types of fish here:</h4>
+        <div class="info-box top-box">
+            <h4>Types of fish here:</h4>
             <div class="fish-list">
                 {% for fish in place.fishes.all %}
                     <span class="fish-item">{{ fish.name }}</span>
@@ -56,15 +56,13 @@
                 </div>
             </div>
             {% else %}
-            <div class="info-box weather-box-new" style="opacity: 0.8;">
+            <div class="info-box weather-box-new no-weather">
                 <h4>🌤️ Weather Info</h4>
-                <div style="text-align: center; padding: 20px 10px;">
-                    <span style="font-size: 40px;">📍</span>
-                    <p style="margin-top: 10px; font-style: italic; color: #666;">
-                        Weather data is not available for this location yet. 
-                    </p>
+                <div class="no-weather-content">
+                    <span class="weather-icon-placeholder">📍</span>
+                    <p>Weather data is not available for this location yet.</p>
                     {% if user.is_staff %}
-                        <small style="color: #1a3c34;">(Admin: Please add coordinates in the admin panel)</small>
+                        <small>(Admin: Please add coordinates in the admin panel)</small>
                     {% endif %}
                 </div>
             </div>
@@ -73,10 +71,14 @@
     </div>
 
     <hr class="map-divider"/>
-
-    <div class="place-description-text">
-        <h3>Additional information</h3>
-        <p>{{ place.description|linebreaks }}</p>
+    
+    <div class="place-description-wrapper">
+        <div class="place-description-text">
+            <h3>Additional information</h3>
+            <input type="checkbox" id="desc-toggle" class="desc-toggle">
+            <div class="description-content"><p>{{ place.description|linebreaks }}</p></div>
+            <label for="desc-toggle" class="read-more-label"></label>
+        </div>
     </div>
 
     {% if place.map_embed %}
@@ -101,34 +103,28 @@
         <h4><span>🎣</span> Share your adventure</h4>
         <form method="post" enctype="multipart/form-data" class="fishing-form">
             {% csrf_token %}
-            
             <div class="form-group">
                 <label>Title of your report:</label>
                 {{ form.title }}
             </div>
-
             <div class="form-row">
                 <div class="form-group">
                     <label>Photo (optional):</label>
                     {{ form.image }}
                 </div>
             </div>
-
             <div class="form-group">
                 <label>Tell us more (bait, weather, equipment):</label>
                 {{ form.content }}
             </div>
-
             <button type="submit" class="btn-submit-report">Post Report →</button>
         </form>
     </div>
-
     {% else %}
     <div class="login-prompt">
         <h4>Share your fishing trip ?</h4>
-        <p>Only registered fishermans can published a report story.</p>
-            <a href="{% url 'login' %}" class="btn-more-report">
-                Log in here</a> or <a href="{% url 'signup' %}">is register.</a>
+        <p>Only registered fishers can published a report story!</p>
+        <a href="{% url 'login' %}" class="btn-more-report">Log in here</a> or <a href="{% url 'signup' %}">is register.</a>
     </div>
     {% endif %}
 
@@ -144,13 +140,11 @@
                         By: <strong>{{ post.author.username }}</strong> | {{ post.created_on|date:"d M Y" }}
                     </p>
                     <p class="report-text">{{ post.content|truncatewords:15 }}</p>
-                    <a href="{% url 'post_detail' post.slug %}" class="btn-more" style="margin-top: 10px;">View full report →</a>
+                    <a href="{% url 'post_detail' post.slug %}" class="btn-more">View full report →</a>
                 </div>
             </div>
         {% empty %}
-            <p class="reports-empty">
-                No reports yet for this location. Be the first to share your catch!
-            </p>
+            <p class="reports-empty">No reports yet for this location. Be the first to share your catch!</p>
         {% endfor %}
     </div>
 </div>
