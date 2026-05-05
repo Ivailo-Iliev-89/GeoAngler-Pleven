@@ -2,3 +2,5 @@ test_env/
 .env
 __pycache__
 *.pyc
+staticfiles/
+db.sqlite3
