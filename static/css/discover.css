@@ -1,8 +1,15 @@
-/* Search Section */
+/* -- Секция Търси / Главен контейнер -- */
+.discover-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .search-container { margin-top: 50px; }
 .search-section {
     background: linear-gradient(rgba(26, 60, 52, 0.8), rgba(26, 60, 52, 0.8)), url('/static/images/water-bg.jpg');
     background-size: cover;
+    background-position: center;
     padding: 80px 20px;
     text-align: center;
     color: white;
@@ -38,7 +45,7 @@
 }
 .search-bar button:hover { background: #1a3c34; color: #ffca28; }
 
-/* Toolbar and Navigation */
+/* -- Търсачката + Навигация -- */
 .search-toolbar {
     display: flex;
     justify-content: space-between;
@@ -47,12 +54,12 @@
     margin-bottom: 30px;
     border-bottom: 2px solid #f0f0f0;
     flex-wrap: wrap;
-    color:#1a3c34;
+    color: #1a3c34;
     background-color: #eee;
 }
 .search-toolbar p { font-style: italic;}
-.query-highlight {color: #ffca28;font-style: italic;}
-.search-nav-buttons {display: flex;gap: 10px;}
+.query-highlight {color: #ffca28; font-style: italic;}
+.search-nav-buttons {display: flex; gap: 10px;}
 .nav-btn {
     padding: 8px 18px;
     border-radius: 20px;
@@ -63,40 +70,49 @@
     transition: 0.3s;
 }
 .btn-new-search { background: #fff; color: #1a3c34; border: 1px solid #1a3c34; }
-.btn-go-home { background: #1a3c34; color: #ffca28 !important; }
-.nav-btn:hover {transform: translateY(-2px);box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+.btn-go-home { background: #1a3c34;  color: #ffca28 !important; }
+.nav-btn:hover {transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
 
-/* Explorer (Grid and Cards) */
-.explorer-grid {
+/* -- Ниво Дунав + Къде Кълве -- */
+.info-dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
-    margin-top: 30px;
-    padding-bottom: 50px;
+    margin-bottom: 40px;
 }
-.explorer-card {
+.dashboard-card {
     background: #ffffff;
-    border-left: 5px solid #ffca28;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    border: 1px solid #eef2f1;
+    border-left: 5px solid #1a3c34;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.explorer-card:hover {transform: translateY(-8px);box-shadow: 0 12px 25px rgba(0,0,0,0.15);background: #fdfdfd;}
-.explorer-card h3 {color: #1a3c34;font-family: 'Oswald', sans-serif;margin-bottom: 10px;font-size: 1.4rem;}
-.explorer-card p {color: #555;font-size: 0.95rem;line-height: 1.5;margin-bottom: 20px;}
-.explorer-card-badge {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    color: #888;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
+.dashboard-card h3 {
+    color: #1a3c34;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #ffca28;
+    padding-bottom: 8px;
 }
-.btn-discover {
+
+/* Блок за Дунав */
+.danube-promo p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.btn-dashboard {
     display: inline-block;
-    padding: 8px 20px;
-    background: #1a3c34;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #1a3c34;
     color: #ffca28 !important;
     text-decoration: none;
     border-radius: 5px;
@@ -105,13 +121,192 @@
     font-size: 0.85rem;
     transition: 0.3s;
 }
-.btn-discover:hover { background: #ffca28; color: #1a3c34 !important; }
+.btn-dashboard:hover {background-color: #ffca28;color: #1a3c34 !important;}
 
-/* Quick Filters and Categories */
-.filter-group h3,
+/* -- Блок за Къде кълве -- */
+.bite-progress-container {display: flex; flex-direction: column;gap: 15px;}
+.progress-bar-wrapper {display: flex; flex-direction: column; gap: 6px;}
+.progress-bar-wrapper span { font-size: 0.9rem; font-weight: bold; color: #333;}
+.progress-bar {
+    background-color: #eee;
+    height: 12px;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+.progress-fill { height: 100%; border-radius: 50px; transition: width 0.6s ease-in-out;}
+.active-fill { background-color: #5cb85c; }
+.weak-fill   { background-color: #f0ad4e; }
+.capo-fill   { background-color: #d9534f; }
+
+/* --  Секция (Свободни / Платени) -- */
+.access-types-section {margin-bottom: 40px;}
+.access-types-section h2 {
+    font-family: 'Gill Sans', sans-serif;
+    color: #ffca28;
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    border-bottom: 2px solid #1a3c34;
+    border-radius: 15px;
+    text-align: center;
+    background: #1a3c34;
+    padding: 5px 0;
+}
+.access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px;}
+.access-card {
+    display: block;
+    height: 140px;
+    border-radius: 10px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.access-card:hover {transform: translateY(-5px);box-shadow: 0 8px 20px rgba(0,0,0,0.18);}
+.free-card {background: linear-gradient(rgba(26, 60, 52, 0.75), rgba(26, 60, 52, 0.75)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600') center/cover;}
+.paid-card {background: linear-gradient(rgba(26, 60, 52, 0.75), rgba(26, 60, 52, 0.75)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600') center/cover;}
+.access-card-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+.access-card-content h3 {
+    margin: 0 0 8px 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+}
+.access-card-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #ffca28;
+    font-style: italic;
+}
+
+/* -- Препоръчани Излети ( + Картичките за тях ) --*/
+.explorer-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+.explorer-title {
+    color: #ccff00;
+    border-bottom: 3px solid #adff2f;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.explorer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;}
+.explorer-card {
+    display: block;
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.explorer-card:hover {
+    transform: translateY(-5px);
+    border-color: #adff2f;
+    box-shadow: 0 6px 20px rgba(173, 255, 47, 0.15);
+}
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(18, 24, 36, 0.95) 0%, rgba(18, 24, 36, 0.7) 60%, transparent 100%);
+    padding: 20px;
+    color: white;
+}
+.card-overlay h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.3rem;
+    color: #fff;
+    font-weight: 700;
+}
+.card-overlay p {
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    line-height: 1.4;
+}
+.card-tag {
+    align-self: flex-start;
+    background: #2ecc71;
+    color: #fff;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.btn-view-place {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #ccff00;
+    color: #121824;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: 0.2s ease;
+}
+.btn-view-place:hover {
+    background: #b3e600;
+    transform: scale(1.05);
+}
+.empty-message {
+    color: #94a3b8;
+    font-style: italic;
+    font-size: 1.1rem;
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 0;
+}
+.back-link-wrapper {margin-top: 40px;}
+.btn-back-link {
+    color: #1a3c34;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: 0.2s;
+}
+.btn-back-link:hover {
+    color: #ccff00;
+    padding-left: 5px;
+}
+.hover-content p {
+    color: #ddd;
+    font-size: 0.9rem;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+}
+.btn-more-overlay {
+    display: inline-block;
+    color: #2ecc71;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+/* -- Препоръчани места -- */
 .recommended-section h2 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color:#ffca28;
+    font-family: 'Gill Sans', sans-serif;
+    color: #ffca28;
     margin-bottom: 20px;
     font-size: 1.6rem;
     border-bottom: 2px solid #1a3c34;
@@ -119,39 +314,11 @@
     align-items: center;
     text-align: center;
     background: #1a3c34;
+    padding: 5px 0;
 }
-.filter-grid {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    flex-direction: column;
-}
-.filter-grid a {color: #4a571b;font-family: cursive; font-size: 1.2rem;}
-.fishing-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 25px 15px;
-    background: #fff;
-    border-radius: 12px;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.fishing-item:hover,
-.filter-grid a:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    border-color: #ffca28;
-    background-color: #1a3c34;
-    color: #ffca28;
-    font-style: italic;
-}
-.method-alt:hover {background-color: #f9fbf2;border-color: #1a3c34;}
+.method-alt:hover { background-color: #f9fbf2; border-color: #1a3c34;}
 
-/* Fallbacks */
+/* --(Няма намерени места) -- */
 .places-no-match { 
     grid-column: 1/-1; 
     text-align: center;
@@ -161,18 +328,36 @@
     border: 2px dashed #ddd;
     color: #333;
 }
-.places-no-match .no-match-content {color:gray;font-style: oblique;}
+.places-no-match .no-match-content {color: gray;font-style: oblique;}
 
-/* --- MEDIA QUERIES --- */
+/* -- Мобилни Устройства -- */
 @media (max-width: 768px) {
-    .search-section {padding: 30px 15px;margin-bottom: 20px;}
-    .search-bar {flex-direction: column;background: transparent;box-shadow: none;gap: 10px;}
-    .search-bar input {border-radius: 25px;width: 100%;text-align: center;padding: 12px;}
-    .search-bar button {border-radius: 25px;padding: 12px;width: 100%;position: relative;z-index: 2;}
-    .search-toolbar {flex-direction: column;gap: 15px;text-align: center;}
-    .search-nav-buttons {width: 100%;justify-content: center;}
-    .explorer-grid {grid-template-columns: 1fr;}
-    .filter-grid {gap: 10px;}
-    .fishing-item {padding: 15px 5px;}
-    .fishing-item h4 {font-size: 0.9rem;}
+    .search-section {padding: 30px 15px; margin-bottom: 20px;}
+    .search-bar {
+        flex-direction: column;
+        background: transparent;
+        box-shadow: none;
+        gap: 10px;
+    }
+    .search-bar input {
+        border-radius: 25px;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+    .search-bar button {
+        border-radius: 25px;
+        padding: 12px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+    .search-toolbar { flex-direction: column; gap: 15px; text-align: center;}
+    .search-nav-buttons { width: 100%; justify-content: center;}
+    .info-dashboard-grid { grid-template-columns: 1fr; gap: 15px;}
+    .access-grid { grid-template-columns: 1fr; gap: 15px;}
+    .explorer-grid { grid-template-columns: 1fr;}
+    .filter-grid { gap: 10px;}
+    .fishing-item { padding: 15px 5px;}
+    .fishing-item h4 { font-size: 0.85rem;}
 }

@@ -12,7 +12,7 @@
             {% endif %}
         </div>
 
-        <h1>Method: {{ method.name }}</h1>
+        <h1>Техника: {{ method.name }}</h1>
         <div class="method-description">
             {{ method.description|linebreaks }}
         </div>
@@ -20,7 +20,7 @@
 
     <hr class="map-divider">
 
-    <h2 class="section-title">Suitable locations for {{ method.name }}</h2>
+    <h2 class="section-title">Топ локации свързани с {{ method.name }}</h2>
     
     <div class="places-grid">
         {% for place in places %}
@@ -34,12 +34,12 @@
             <div class="place-info">
                 <h3>{{ place.name }}</h3>
                 <p>{{ place.description|truncatewords:15 }}</p>
-                <a href="{% url 'place_detail' place.slug %}" class="btn-more">Go to location</a>
+                <a href="{% url 'place_detail' place.slug %}" class="btn-more">Отиди и виж</a>
             </div>
         </div>
         {% empty %}
         <div class="empty-state">
-            <p>No locations have been added for this method yet.<br/>Be the first?</p>
+            <p>Все още няма локация , която да е свързана с този метод.<br/>Направи го ти ?</p>
         </div>
         {% endfor %}
     </div>

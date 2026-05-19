@@ -5,13 +5,13 @@
 <div class="search-container">
 
     <div class="search-toolbar">
-        <h2>Results for: "{{ query }}"</h2>
-        <p>Found {{ results|length }} fishing spots.</p>
+        <h2>Резултати за : "{{ query }}"</h2>
+        <p>Намерихме {{ results|length }} локации за теб.</p>
     </div>
 
     <div class="search-nav-buttons">
-        <a href="{% url 'discover' %}" class="nav-btn btn-new-search">🔍 New Search</a>
-        <a href="{% url 'index' %}" class="nav-btn btn-go-home">Back to home page</a>
+        <a href="{% url 'discover' %}" class="nav-btn btn-new-search">🔍 Ново търсене</a>
+        <a href="{% url 'index' %}" class="nav-btn btn-go-home">Назад към началото</a>
     </div>
 
     <div class="explorer-grid">
@@ -20,13 +20,13 @@
                 <div class="explorer-card-badge">{{ place.category }}</div>
                 <h3>{{ place.name }}</h3>
                 <p>{{ place.description|truncatewords:15 }}</p>
-                <a href="{% url 'place_detail' place.slug %}" class="btn-more">View Spot</a>
+                <a href="{% url 'place_detail' place.slug %}" class="btn-more">Разгледай</a>
             </div>
         {% empty %}
             <div class="places-no-match">
                 <div class="no-match-content">
-                    <p>No spots found matching for your searh.Try someting else ?</p>
-                    <a href="{% url 'discover' %}" class="btn-more">Back to Discovery</a>
+                    <p>Няма намерени места за това търсене. Опитай с нещо друго ?</p>
+                    <a href="{% url 'discover' %}" class="btn-more">Назад</a>
                 </div>
             </div>
         {% endfor %}

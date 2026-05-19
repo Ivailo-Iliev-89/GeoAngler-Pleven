@@ -20,7 +20,15 @@
     justify-content: center;
     position: relative;
     align-items: center;
-    
+    padding: 5px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+.logo:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 .logo .btn-primary {
     display: inline-block;
@@ -44,7 +52,6 @@
     font-weight: bold;
     text-decoration: none;
     font-family: 'Oswald', sans-serif;
-    
 }
 .logo a {
     color: white;
@@ -78,22 +85,41 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.user-menu a {
+    display: inline-block;
+    background: #3498db;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 15px;
+    transition: background 0.2s ease;
+}
+
+.user-menu a:hover {
+    background: #2980b9;
 }
 .user-menu .user-greeting {
     color:#ffca28;
     font-style: italic;
-    
+    font-size: 0.9rem;
 }
 .logout-link {
-    background: none;
+    background: transparent;
     border: 1px solid #ffca28;
     color: #ffca28;
     font-family: 'Oswald', sans-serif;
     cursor: pointer;
     padding: 4px 10px;
     text-transform: uppercase;
-    transition: 0.3s;
-    
+    transition: all 0.3s ease;
+    font-size: 0.80rem;
 }
 .logout-link:hover {background: #ffca28;color: #1a3c34;}
 
@@ -106,7 +132,6 @@
     transform: translateY(15px);
     transition: all 0.2s ease-in-out;
     top: 100%;
-    min-width: 220px;
     position: absolute;
     background-color: #e9f5f2;
     min-width: 200px;
@@ -119,9 +144,6 @@
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     z-index: 1000;
-
-    
-    /* For Firefox Only--> Scroll Menu */
     scrollbar-width: thin;
     scrollbar-color: #1a3c34 #f8f9fa;
 }
@@ -159,7 +181,21 @@
     left: auto;
 }
 
-/* --- MEDIA QUERIES --- */
+/* Времето Плевен */
+.weather-widget {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(26, 60, 52, 0.15);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    border: 1px solid rgba(255, 202, 40, 0.4);
+    color: #1a3c34;
+    font-size: 0.9rem;
+}
+
+/* --- Мобилни Устройства --- */
 @media (max-width: 768px) {
     .navbar {
         display: flex;
@@ -187,7 +223,7 @@
         margin-top: 10px;
         padding-top: 5px;
     }
-    .user-greeting {font-size: 0.85rem;  white-space: nowrap;}
+    .user-greeting {font-size: 0.75rem;  white-space: nowrap;}
     .mobile-search-container {
         display: flex;
         justify-content: center;

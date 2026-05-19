@@ -22,43 +22,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-let currentPage = 1;
-async function handlePagination(page) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const type = urlParams.get('type') || '';
+/* -- Плавното показване на Формата за Излета -- */
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("toggleFormBtn");
+    const cancelBtn = document.getElementById("cancelFormBtn");
+    const formContainer = document.getElementById("collapsibleFormContainer");
+    const formAnchor = document.getElementById("form-anchor-target");
 
-    try {
-        const response = await fetch(`?page=${page}&type=${type}`,{
-            headers: { 'x-requested-with': 'XMLHttpRequest' }
-        });
+    function toggleFishingForm() {
+        if (!formContainer) return; 
 
-        if (!response.ok) throw new Error('Network response was not ok!');
-        const data = await response.json();
-        
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data.html, 'text/html');
-        const newPlaces = doc.getElementById('places-anchor').innerHTML;
-
-        document.getElementById('places-anchor').innerHTML = newPlaces;
-        document.getElementById('pageCounter').innerText = `Page ${data.page}`;
-
-        currentPage = data.page;
-        
-        document.getElementById('prevBtn').style.display = data.previous_page ? 'inline-block' : 'none';
-        document.getElementById('nextBtn').style.display = data.next_page ? 'inline-block' : 'none';
-        document.getElementById('places-anchor').scrollIntoView({ behavior: 'smooth' });
-
-    } catch (error) {
-        console.error("Error with reloading at pages:", error);
+        if (formContainer.style.display === "none" || formContainer.style.display === "") {
+            formContainer.style.display = "block";
+            formContainer.style.opacity = "0";
+            
+            setTimeout(() => { 
+                formContainer.style.opacity = "1"; 
+            }, 5);
+            
+            toggleBtn.innerHTML = " Скрий ";
+            toggleBtn.classList.add("btn-cancel");
+            
+            setTimeout(() => {
+                formAnchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+            
+        } else {
+            formContainer.style.opacity = "0";
+            
+            setTimeout(() => { 
+                formContainer.style.display = "none"; 
+            }, 400);
+            
+            toggleBtn.innerHTML = " Сподели излет ";
+            toggleBtn.classList.remove("btn-cancel");
+        }
     }
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-
-    if (nextBtn && prevBtn) {
-        nextBtn.addEventListener('click', () => handlePagination(currentPage + 1));
-        prevBtn.addEventListener('click', () => handlePagination(currentPage - 1));
-    }
+    if (toggleBtn) toggleBtn.addEventListener("click", toggleFishingForm);
+    if (cancelBtn) cancelBtn.addEventListener("click", toggleFishingForm);
 });

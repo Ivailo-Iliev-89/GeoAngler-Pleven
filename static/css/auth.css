@@ -1,4 +1,4 @@
-/* SignUp Form*/
+/* --Влез Форма --*/
 .auth-container {
     max-width: 450px;
     margin: 80px auto;
@@ -10,7 +10,7 @@
 }
 .auth-container h2 { color: #1a3c34; font-family: 'Oswald', sans-serif; margin-bottom: 10px; }
 
-/* Login Form */
+/* -- Логин Форма -- */
 .login-container {
     max-width: 400px; 
     margin: 50px auto; 
@@ -20,11 +20,10 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
     border-top: 5px solid #1a3c34;
 }
-
 .login-container h2 { color: #1a3c34; text-align: center; }
 .login-container p { color: #666; text-align: center; font-family: 'Gill Sans', sans-serif; }
 
-/* Element in fields */
+/* -- Символите в формата -- */
 .form-fields p { text-align: left; margin-bottom: 15px; }
 .form-fields input {
     width: 100%;
@@ -46,6 +45,5 @@
     transition: 0.3s;
 }
 .auth-submit-btn:hover { background: #ffca28; color: #1a3c34; }
-
 .register-form { margin-top: 20px; text-align: center; font-size: 0.9em; }
 .register-form a { color: #1a3c34; font-weight: bold; }

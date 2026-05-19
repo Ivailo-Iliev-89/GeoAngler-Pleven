@@ -1,33 +1,141 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
 <div class="static-page-container">
-    <h1>About Us</h1>
+    <h1>За Нас</h1>
+    
     <div class="about-content">
         
-        <p><strong>
-            It's not just a website - it is a digital home for anyone who grew up 
-            with a fishing rod in hand on the banks of the Vit River,
-            or spent sleepless nights waiting for the big blow of the Danube.
+        <p class="about-highlight"><strong>
+            Това не е просто уебсайт – това е дигиталният дом на всеки, който е израснал 
+            с въдица в ръка по бреговете на река Вит или е прекарвал безсънни нощи, 
+            чакайки тежкия удар на дунавски звяр.
         </strong></p>
 
         <p>
-            The Pleven region is unique in its diversity.
-            From the rapids of the rivers, through the tranquility of the dams in Moesia,
-            to the grandeur of the great river in the north. Our mission is to gather all this information in one place.
+            Плевенският регион е уникален със своето разнообразие – от бързеите на реките, 
+            през спокойствието на язовирите в Мизия, до величието на голямата река на север. 
+            Нашата мисия е да съберем цялата тази информация на едно място.
         </p>
-        <h3>What we do ?</h3>
+
+        <div class="about-image-wrapper">
+            <img src="{% static 'images/totlebenov-val-dam.png' %}" alt="Риболов в Плевенско" class="about-img">
+        </div>
+
+        <h3>Какво правим ние?</h3>
         <ul>
-            <li>We map the best fishing spots around Pleven.</li>
-            <li>We share which techniques (feeder, spinning, float) work best for local conditions.</li>
-            <li>We foster a "catch and release" attitude and keep nature clean.</li>
+            <li>Картографираме най-добрите риболовни места около Плевен.</li>
+            <li>Споделяме кои техники (фидер, спининг, плувка) работят най-добре при локалните условия.</li>
+            <li>Възпитаваме отношение „хвани и пусни“ и се грижим за опазването на чиста природа.</li>
         </ul>
 
-        <p>We are a team of enthusiastic fishermen from the city of Pleven,
-            who believe that information about their favorite hobby should be accessible and organized.
-        </p>
-        <p>Our goal is to promote the beauty of the Vit River, the Danube, Iskar and the numerous dams in the region, 
-            while at the same time fostering a responsible attitude towards nature.</p>
+        <p>Ние сме екип от ентусиазирани рибари от град Плевен, които вярват, че информацията за любимото хоби трябва да бъде достъпна, точна и добре организирана.</p>
+        
+        <p>Нашата цел е да популяризираме красотата на река Вит, Дунав, Искър и многобройните язовири в региона, като същевременно насърчаваме отговорното отношение към природата и рибните ресурси.</p>
+        
+        <!-- НОВОТО БУТОНЧЕ ЗА ДЕЙСТВИЕ -->
+        <div class="about-actions">
+            <a href="{% url 'discover' %}" class="btn-discover-more">Разгледай местата за риболов →</a>
+        </div>
+
     </div>
 </div>
+
+<!-- ЦЯЛИЯТ CSS СТИЛ СИ Е НАЙ-ОТДОЛУ -->
+<style>
+    .static-page-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #1a2232;
+        border-radius: 15px;
+        border: 1px solid #2d3748;
+        color: #fff;
+    }
+    .static-page-container h1 {
+        color: #ccff00;
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #2d3748;
+        padding-bottom: 10px;
+    }
+    .about-highlight {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #adff2f; /* Светло жълто-зелено */
+        margin-bottom: 20px;
+    }
+    .about-content p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #cbd5e1;
+        margin-bottom: 20px;
+    }
+    .about-content h3 {
+        color: #ccff00;
+        font-size: 1.5rem;
+        margin: 30px 0 15px 0;
+    }
+    .about-content ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 30px;
+    }
+    .about-content ul li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 12px;
+        color: #e2e8f0;
+        font-size: 1.05rem;
+    }
+    /* Малка кукичка или точка пред списъка */
+    .about-content ul li::before {
+        content: "🐟";
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-size: 1rem;
+    }
+    
+    /* СТИЛ ЗА СНИМКАТА */
+    .about-image-wrapper {
+        width: 100%;
+        margin: 25px 0;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 2px solid #adff2f; /* Нашата жълто-зелена рамка */
+    }
+    .about-img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* СТИЛ ЗА БУТОНА */
+    .about-actions {
+        text-align: center;
+        margin-top: 40px;
+    }
+    .btn-discover-more {
+        display: inline-block;
+        background: #ccff00;
+        color: #121824;
+        padding: 14px 30px;
+        border-radius: 25px;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(204, 255, 0, 0.2);
+    }
+    .btn-discover-more:hover {
+        background: #b3e600;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(204, 255, 0, 0.4);
+    }
+</style>
+
 {% endblock %}

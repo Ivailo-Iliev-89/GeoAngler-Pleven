@@ -56,6 +56,20 @@ class FishingPlace(models.Model):
         max_digits=9, decimal_places=6, null=True, blank=True, help_text='Latitude')
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, null=True, blank=True, help_text='Longitude')
+    ACCESS_TYPES = [
+        ('free', 'Свободен достъп (с билет)'),
+        ('paid', 'Платен обект (такса)'),
+    ]
+    access_type = models.CharField(
+        max_length=10,
+        choices=ACCESS_TYPES,
+        default='free',
+        verbose_name='Access type'
+    )
+    is_recommended = models.BooleanField(
+        default=False,
+        verbose_name='Recommended Spot (Top 5)'
+    )
 
     def save(self, *args, **kwargs):
         if not self.slug:

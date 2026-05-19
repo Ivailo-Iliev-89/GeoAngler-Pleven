@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="detail-container">
+    <div class="detail-header text-center">
+        <h1>Риболовен профил на {{ user.username }}</h1>
+        <p class="location-tag">Член на общността от: {{ user.date_joined|date:"d M Y" }}</p>
+    </div>
+
+    <div class="stats-bar">
+        <div class="info-box stats-box">
+            <h5 class="stats-title">Твоите споделени излети</h5>
+            <strong class="stats-counter counter-green">{{ my_reports_count }} репортажа</strong>
+        </div>
+        <div class="info-box stats-box">
+            <h5 class="stats-title">Ранг</h5>
+            <strong class="stats-counter counter-blue">
+                {% if my_reports_count >= 15 %}
+                    Майсторче 
+                {% elif my_reports_count >= 5 %}
+                    Напреднал си
+                {% else %}
+                    Начинаещ 
+                {% endif %}
+            </strong>
+        </div>
+    </div>
+
+    <hr class="map-divider"/>
+
+    <div class="user-reports-container">
+        <h3 class="section-title">⏱️ Твоят личен риболовен дневник</h3>
+        
+        <div class="reports-grid">
+            {% for post in my_posts %} 
+                <div class="report-card">
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                    {% endif %}
+                    <div class="report-card-body">
+                        <h4>{{ post.title }}</h4>
+                        <p class="report-meta">
+                            Локация: <strong>{{ post.location.name }}</strong> | {{ post.created_on|date:"d M Y" }}
+                        </p>
+                        <p class="report-text">{{ post.content|truncatewords:15 }}</p>
+                        <a href="{% url 'post_detail' post.slug %}" class="btn-more">Виж репортажа →</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="reports-empty" style="text-align: center; width: 100%;">
+                    Все още нямаш записани излети. Време е да отидеш на вода и да откриеш сезона!
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

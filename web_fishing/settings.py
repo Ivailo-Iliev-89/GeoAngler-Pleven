@@ -52,6 +52,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'fishing_app.context_processors.fishing_menu',
+                'fishing_app.context_processors.pleven_weather_processor',
             ],
         },
     },
@@ -93,7 +94,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'discover'
 LOGOUT_REDIRECT_URL = 'index'
 
 STATIC_URL = 'static/'

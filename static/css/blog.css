@@ -1,4 +1,4 @@
-/*-- Blog & Reports Styles --*/
+/* -- Блог и Рапорти Главен Контейнер -- */
 .post-detail-container,
 .post-full-view {
     max-width: 900px;
@@ -8,7 +8,7 @@
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
-/*-- Metadata (like author,data,location)-- */
+/* -- Автор, дата ( инфо ) -- */
 .post-meta,
 .post-detail-container header p {
     font-size: 0.95rem;
@@ -19,10 +19,10 @@
     text-align: center;
 }
 .post-meta a,
-.post-detail-container header a {color: #1a3c34;font-weight: bold;text-decoration: none;}
+.post-detail-container header a {color: #1a3c34; font-weight: bold; text-decoration: none;}
 .post-meta a:hover {text-decoration: underline;}
 
-/*-- The big image at the post --*/
+/*-- Снимката на Поста --*/
 .post-image-large,
 .post-main-image {
     width: 100%;
@@ -39,7 +39,7 @@
     object-fit: cover;
 }
 
-/*-- Content of report --*/
+/*-- Описанието вътре в поста --*/
 .post-content,
 .post-full-content {
     font-family: 'Montserrat', sans-serif;
@@ -49,7 +49,7 @@
     text-align: justify;
 }
 
-/*-- Comments section --*/
+/*-- Комент секцията под поста --*/
 .comments-section {margin-top: 50px; padding-top: 30px; border-top: 2px solid #ffca28;}
 .comment {
     background: #f9f9f9;
@@ -59,15 +59,15 @@
     border-left: 4px solid #1a3c34;
 }
 .comment strong {color: #1a3c34; display: block; margin-bottom: 5px;}
-.comment p {margin: 0;font-size: 1rem;}
+.comment p {margin: 0; font-size: 1rem;}
 
-/*-- Reports Grid and Cards in Place Detail --*/
+/*-- Картички на Потребителя отдолу --*/
 .user-reports-container {margin-top: 40px;padding: 20px;}
 .user-reports-container h3 { 
     background-color: #1a3c34;
     border-radius: 15px;
     text-transform: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', sans-serif;
     color:#ddd;
 }
 .section-title {
@@ -100,7 +100,7 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     transition: 0.3s;
 }
-.report-card:hover {transform: translateY(-5px);box-shadow: 0 6px 15px rgba(0,0,0,0.1);}
+.report-card:hover {transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1);}
 .report-card img {width: 100%; height: 200px; object-fit: cover;}
 .report-card-body {padding: 15px;}
 .report-card-body h4 {margin: 0 0 10px 0; color: #1a3c34; text-align: left;}
@@ -116,7 +116,8 @@
     line-height: 1.5;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-/* PostForm */
+
+/* -- Добави Излет -- */
 .add-report-form {
     background: #ffffff;
     padding: 30px;
@@ -129,7 +130,7 @@
     color: #1a3c34;
      margin-bottom: 20px; 
      font-size: 1.4rem;
-     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     font-family:'Segoe UI', sans-serif;
      text-transform: uppercase;
      line-height: 1.2;
      text-align: center;
@@ -162,17 +163,17 @@
 }
 .fishing-form input[type="file"] {padding: 10px 0;color: #666;}
 
-/* --- MEDIA QUERIES --- */
+/* --- Мобилни Устройства --- */
 @media (max-width: 768px) {
     .post-detail-container,
     .post-full-view,
-    .add-report-form {margin: 20px 10px;padding: 20px;width: auto;}
+    .add-report-form {margin: 20px 10px; padding: 20px; width: auto;}
     .post-content,
-    .post-full-content {font-size: 1rem;text-align: left;}
-    .reports-grid {display: flex;flex-direction: column;gap: 20px;}
-    .report-card {width: 100%;margin: 0;}
+    .post-full-content {font-size: 1rem; text-align: left;}
+    .reports-grid {display: flex; flex-direction: column; gap: 20px;}
+    .report-card {width: 100%; margin: 0;}
     .report-card img {height: 200px;}
     .fishing-form .form-row {flex-direction: column;}
     .btn-submit-report {width: 100%;}
-    .section-title {font-size: 1.6em;}
+    .section-title {font-size: 1.5em;}
 }

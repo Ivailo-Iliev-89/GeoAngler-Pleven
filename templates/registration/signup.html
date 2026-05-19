@@ -2,19 +2,19 @@
 {% block content %}
 
 <div class="auth-container signup-box">
-    <h2>Become a part of GeoAngler</h2>
-    <p>Register for share your fish catch with other fishers!</p>
+    <h2>Стани част от Плевен Фишинг</h2>
+    <p>Регистрирай се при нас за да споделиш и видиш всичко ключово за Плевенският регион.</p>
     
     <form method="post" class="fishing-form">
         {% csrf_token %}
         <div class="form-fields">
             {{ form.as_p }}
         </div>
-        <button type="submit" class="auth-submit-btn">Create a profile</button>
+        <button type="submit" class="auth-submit-btn">Създай профил</button>
     </form>
     
     <div class="auth-footer">
-        <p>You have profile already ? <a href="{% url 'login' %}">Login here</a></p>
+        <p>Имаш профил вече ? <a href="{% url 'login' %}">Влез от тук</a></p>
     </div>
 </div>
 {% endblock %}

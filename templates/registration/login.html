@@ -2,18 +2,18 @@
 {% block content %}
 
 <div class="login-container">
-    <h2>GeoAngler Login</h2>
-    <p>Welcome back again, dear Fisher !</p>
+    <h2>Присъедини се към нашата общност</h2>
+    <p>Добре дошъл отново , Рибарю !</p>
 
     <form method="post" class="fishing-form">
         {% csrf_token %}
         <div class="sign-up-form">{{ form.as_p }}</div>
-        <button type="submit" class="btn-submit-report">Login</button>
+        <button type="submit" class="btn-submit-report">Влез</button>
     </form>
 
     <div class="register-form">
-        <p>You dont't have a profile ?
-            <a href="{% url 'signup' %}">Sign up here</a>
+        <p>Още ли нямаш профил при нас? Невъзможно !
+            <a href="{% url 'signup' %}">Регистирай се тук</a>
         </p>
     </div>
 </div>

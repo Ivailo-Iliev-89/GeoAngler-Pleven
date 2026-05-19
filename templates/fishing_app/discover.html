@@ -2,52 +2,83 @@
 {% load static %}
 
 {% block content %}
-
 <div class="discover-container">
     <section class="search-section">
-        <h1>Find your next fishing adventure</h1>
+        <h1>Намери следващото си риболовно приключение</h1>
         <form action="{% url 'search_results' %}" method="get" class="search-bar">
-            <input type="text" name="q" placeholder="Search by fish, location or method..." required>
-            <button type="submit">🔍 Search</button>
+            <input type="text" name="q" placeholder="Търси по риба, локация или метод..." required>
+            <button type="submit">🔍 Търси</button>
         </form>
     </section>
 
-    <div class="quick-filters">
-        <div class="filter-group">
-            <h3>Explore by Water Type</h3>
-            <div class="filter-grid">
-                <a href="{% url 'index' %}?type=river" class="fishing-item">Rivers</a>
-                <a href="{% url 'index' %}?type=lake" class="fishing-item">Lakes</a>
-                <a href="{% url 'index' %}?type=swamp" class="fishing-item">Swamps</a>
-            </div>
+    <div class="info-dashboard-grid">
+        <div class="dashboard-card danube-promo">
+            <h3>Нива на река Дунав</h3>
+            <p>Следи актуалните нива, температура на водата и промените в реално време за плевенския регион.</p>
+            <a href="{% url 'river_levels' %}" class="btn-dashboard">Виж състоянието на реката</a>
         </div>
 
-        <div class="filter-group">
-            <h3>Top Fishing Techniques</h3>
-            <div class="filter-grid">
-                <a href="/method/bolognese-fishing" class="fishing-item method-alt">Bolognese</a>
-                <a href="/method/feeder-fishing/" class="fishing-item method-alt">Feeder</a>
-                <a href="/method/float-fishing/" class="fishing-item method-alt">Float</a>
-                <a href="/method/spining-fishing/" class="fishing-item method-alt">Spinning</a>
-                <a href="/method/mehtod-feeder-fishing/" class="fishing-item method-alt">Method Feeder</a>
+        <div class="bite-progress-container">
+            <div class="progress-bar-wrapper">
+                <a href="{% url 'bite_filter' 'active' %}" style="text-decoration: none; color: inherit;">
+                    <span>Кълве ({{ stats.active }}%)</span>
+                </a>
+                <div class="progress-bar"><div class="progress-fill active-fill" style="width: {{ stats.active }}%;"></div></div>
+            </div>
+            
+            <div class="progress-bar-wrapper">
+                <a href="{% url 'bite_filter' 'weak' %}" style="text-decoration: none; color: inherit;">
+                    <span>Слабо ({{ stats.weak }}%)</span>
+                </a>
+                <div class="progress-bar"><div class="progress-fill weak-fill" style="width: {{ stats.weak }}%;"></div></div>
+            </div>
+            
+            <div class="progress-bar-wrapper">
+                <a href="{% url 'bite_filter' 'capo' %}" style="text-decoration: none; color: inherit;">
+                    <span>❌ Капо ({{ stats.capo }}%)</span>
+                </a>
+                <div class="progress-bar"><div class="progress-fill capo-fill" style="width: {{ stats.capo }}%;"></div></div>
             </div>
         </div>
     </div>
 
-    <hr>
+    <section class="access-types-section">
+        <h2>Категории Водоеми</h2>
+        <div class="access-grid">
+            <a href="{% url 'access_filter' 'free' %}" class="access-card free-card">
+                <div class="access-card-content">
+                    <h3>Свободен достъп</h3>
+                    <p>Водоеми с държавен билет</p>
+                </div>
+            </a>
+            <a href="{% url 'access_filter' 'paid' %}" class="access-card paid-card">
+                <div class="access-card-content">
+                    <h3>Платени обекти</h3>
+                    <p>Арендатори и платени язовири</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
     <section class="recommended-section">
-        <h2>Recommended Spots</h2>
-
+        <h2>Топ 5 Локации около Плевен</h2>
         <div class="explorer-grid">
             {% for place in recommended %}
-            <div class="explorer-card">
-                <h3>{{ place.name }}</h3>
-                <a href="{% url 'place_detail' place.slug %}" class="btn-more">Explore</a>
-            </div>
+            <a href="{% url 'place_detail' place.slug %}" class="explorer-card" style="background-image: url('{{ place.image.url }}');">
+                <div class="card-overlay">
+                    <div class="card-tag">Посетено</div>
+                    <div class="card-info">
+                        <h3>{{ place.name }}</h3>
+                        <div class="hover-content">
+                            <p>{{ place.description|truncatechars:70 }}</p>
+                            <span class="btn-more-overlay">Разгледай →</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
             {% endfor %}
         </div>
     </section>
-</div>
 
+</div>
 {% endblock %}

@@ -1,42 +1,129 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
 <div class="static-page-container">
-    <h1 class="page-title">Expert Fishing Tips & Tactics</h1>
-    
+    <h1 class="page-title">Експертни Риболовни Съвети И Тактики</h1>
     <div class="advice-card">
-        <h3>Weather, Pressure & Feeding Activity</h3>
-
+        <div class="card-badge badge-weather">🌤️ Метеорология</div>
+        <h3>Времето, налягането и активността на рибата</h3>
         <p>
-            The key to success is <strong>atmospheric stability</strong>. 
-            A steady barometer often signals consistent feeding. 
-            However, many trophy fish in the Pleven region are caught during a 
-            <em>falling barometer</em> just before a storm, as predators sense the change and feed aggressively. 
-            Always check the wind direction – a warm southerly breeze often brings the fish closer to the banks of our local dams.
+            Ключът към успеха на водоема е <strong>атмосферната стабилност</strong>. Постоянните нива на барометъра често означават и предвидимо, устойчиво хранене. 
+            Въпреки това, много от трофейните екземпляри в Плевенския регион се улавят именно при <em>падащо налягане</em> – точно преди буря. 
+            Тогава хищниците усещат промяната и атакуват агресивно. Винаги следете и посоката на вятъра: топлият южен ветрец често раздвижва рибата и я приближава към бреговете на местните язовири.
         </p>
+        <div class="quick-tip">
+            <span class="tip-icon">💡</span> <strong>Златно правило:</strong> Падащ барометър + южен вятър = перфектно време за едър хищник!
+        </div>
     </div>
 
     <div class="advice-card">
-        <h3>Choosing the Right Technique</h3>
-
+        <div class="card-badge badge-tactic">Тактика</div>
+        <h3>Избор на правилната техника</h3>
         <p>
-            When fishing the <strong>Danube</strong>, focus on heavy feeders or heavy-duty spinning gear to handle the strong current. 
-            For the <strong>Vit River</strong>, stealth is your best friend – 
-            light float tackle or ultra-light spinning for chub (klen) works best. 
-            Match your bait to the natural food source in the water for the best results.
+            Когато замятате по <strong>р. Дунав</strong>, заложете на тежки фидери или солиден heavy спининг такъм, за да се справите с мощното течение и дълбоките подмиви. 
+            За <strong>река Вит</strong> обаче, маскировката и тишината са най-добрите ви приятели – лек такъм на плувка (болонеза) или ултралайт спининг за клен (кефал) дават най-добри резултати. 
+            Винаги съобразявайте стръвта с естествената храна във водоема в конкретния сезон.
         </p>
+        <div class="quick-tip">
+            <span class="tip-icon">💡</span> <strong>За Дунав:</strong> Хранилки над 100-120 грама и здрави плетени влакна са задължителни.
+        </div>
     </div>
 
     <div class="advice-card">
-        <h3>Ethics & Conservation (Catch and Release)</h3>
-        
+        <div class="card-badge badge-ethics">Етика</div>
+        <h3>Етика и опазване (Хвани и пусни)</h3>
         <p>
-            Sustainable fishing ensures our children will enjoy the same thrills we do. 
-            Practice <strong>Catch and Release</strong> whenever possible, 
-            especially for large breeding fish. Never leave nylon lines or plastic waste behind – 
-            these are deadly to local birds and wildlife. 
-            Leave the spot cleaner than you found it!
+            Разумният риболов гарантира, че и децата ни ще изпитат същата тръпка от тежките аванси, която изпитваме и ние днес. 
+            Практикувайте <strong>"Хвани и пусни" (Catch and Release)</strong> винаги, когато е възможно, особено за едрите, трофейни майки. 
+            Никога не оставяйте скъсани влакна, куки или пластмасови отпадъци по брега – те са смъртоносни за местните птици и животни. 
+            Нека оставяме мястото по-чисто, отколкото сме го намерили!
         </p>
+        <div class="quick-tip">
+            <span class="tip-icon">💡</span> <strong>Бъди пример:</strong> Изнеси един чувал с чужди боклуци, реката ще ти се отблагодари следващия път.
+        </div>
     </div>
 </div>
+
+<style>
+    .static-page-container {
+        max-width: 850px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+    .page-title {
+        color: #ccff00;
+        font-size: 2.4rem;
+        text-align: center;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+    
+    .advice-card {
+        background: #1a2232;
+        border: 1px solid #2d3748;
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 30px;
+        position: relative;
+        transition: 0.3s ease;
+    }
+    .advice-card:hover {
+        border-color: #adff2f;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(173, 255, 47, 0.05);
+    }
+    
+    .card-badge {
+        position: absolute;
+        top: -12px;
+        left: 25px;
+        padding: 5px 14px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #121824;
+    }
+    .badge-weather { background-color: #00e5ff; }
+    .badge-tactic { background-color: #ccff00; }
+    .badge-ethics { background-color: #adff2f; }
+
+    .advice-card h3 {
+        color: #fff;
+        font-size: 1.4rem;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+    .advice-card p {
+        color: #cbd5e1;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+    .advice-card strong {
+        color: #adff2f;
+    }
+    .advice-card em {
+        color: #ff5252;
+        font-style: normal;
+        font-weight: bold;
+    }
+    .quick-tip {
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 4px solid #adff2f;
+        padding: 12px 15px;
+        border-radius: 0 8px 8px 0;
+        font-size: 0.95rem;
+        color: #94a3b8;
+    }
+    .tip-icon {
+        margin-right: 5px;
+        font-size: 1.1rem;
+    }
+</style>
+
 {% endblock %}

@@ -19,33 +19,36 @@
 
 <nav class="navbar ">
     <div class="logo">
-        <a href="{% url 'index' %}" class="logo-img">GeoAngler</a>
+        <a href="{% url 'discover' %}" class="logo-img">Плевен Фишинг</a>
     </div>
     
     {% if user.is_authenticated %}
     <ul class="nav-links">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle">Locations ▾</a>
+            <a href="#" class="dropdown-toggle">Топ Локации ▾</a>
             <div class="dropdown-content">
-                <div class="dropdown-header">Top Rivers</div>
+                <div class="dropdown-header">Топ Реки</div>
                 {% for river in nav_rivers|slice:3 %}
                     <a href="{% url 'place_detail' river.slug %}">{{ river.name }}</a>
                 {% endfor %}
 
-                <div class="dropdown-header">Top Lakes</div>
+                <div class="dropdown-header">Топ Язовири</div>
                 {% for lake in nav_lakes|slice:3 %}
                     <a href="{% url 'place_detail' lake.slug %}">{{ lake.name }}</a>
                 {% endfor %}
 
-                <div class="dropdown-header">Top Swamps</div>
+                <div class="dropdown-header">Топ Блата</div>
                 {% for swamp in nav_swamps|slice:3 %}
                     <a href="{% url 'place_detail' swamp.slug %}">{{ swamp.name }}</a>
                 {% endfor %}
             </div>
         </li>
-
+        <div class="weather-widget">
+            <span style="font-size: 1.1rem;">{{ pleven_icon }}</span>
+            <span style="color: #ffca28;">Плевен: <strong style="color: #ffca28;">{{ pleven_temp }}</strong></span>
+        </div>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle">Fishing Methods ▾</a>
+            <a href="#" class="dropdown-toggle">Топ Методи ▾</a>
             <div class="dropdown-content">
                 {% for method in nav_methods %}
                     <a href="{% url 'method_detail' method.slug %}">{{ method.name }}</a>
@@ -55,10 +58,11 @@
     </ul>
 
     <div class="user-menu">
-        <span class="user-greeting">Hello, dear Fisher {{ user.username }} !</span>
+        <a href="{% url 'user_profile' %}">Профил</a>
+        <span class="user-greeting">Здравей, рибарче {{ user.username }}</span>
         <form action="{% url 'logout' %}" method="post" style="display: inline;">
             {% csrf_token %}
-            <button type="submit" class="logout-link">Logout</button>
+            <button type="submit" class="logout-link">Излез</button>
         </form>
     </div>
     {% endif %}
@@ -72,20 +76,20 @@
 <footer class="site-footer">
     <div class="footer-content">
         <div class="footer-section">
-            <h4>Connections</h4>
+            <h4>Връзка с нас</h4>
             <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About us</a></li>
-                <li><a href="{% url 'advices' %}">Fishing advices</a></li>
+                <li><a href="{% url 'index' %}">Начало</a></li>
+                <li><a href="{% url 'about' %}">За нас</a></li>
+                <li><a href="{% url 'advices' %}">Риболовни съвети</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
-            <h4>Contacts</h4>
+            <h4>Контакти</h4>
             <ul>
-                <li>Phone: +359-877-093-177</li>
-                <li>Adress: Pleven City, Bulgaria</li>
-                <li>Email: ivailoiliev89@gmail.com</li>
+                <li>Тел: +359-877-093-177</li>
+                <li>Адрес: Pleven City, Bulgaria</li>
+                <li>Имейл: ivailoiliev89@gmail.com</li>
             </ul>
         </div>
     </div>

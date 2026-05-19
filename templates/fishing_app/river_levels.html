@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="danube-container">
+    <h2 class="danube-title">
+        Актуални нива на река Дунав за Плевенският регион
+    </h2>
+
+    <div class="danube-table-wrapper">
+        <table class="danube-table">
+            <thead>
+                <tr>
+                    <th>Станция</th>
+                    <th>Ниво (см)</th>
+                    <th>Промяна (24ч)</th>
+                    <th>Темп. на водата</th>
+                    <th>Темп. на въздуха</th>
+                    <th>Условия за риболов</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for station in danube_stations %}
+                <tr>
+                    <td class="station-name">{{ station.name }}</td>
+                    <td data-label="Ниво (см):" class="station-level">{{ station.level }}</td>
+                    <td data-label="Промяна (24ч):" class="station-trend {{ station.trend_class }}">
+                        {{ station.trend_icon }} {{ station.change }}
+                    </td>
+                    <td data-label="Темп. вода:" class="station-temp">{{ station.temp_water }}</td>
+                    <td data-label="Темп. въздух:" class="station-temp">{{ station.temp_air }}</td>
+                    <td data-label="Условия:" class="station-status" style="color: {{ station.status_color }};">
+                        {{ station.fishing_status }}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="no-data">
+                        В момента няма налични данни от станциите.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="danube-legend">
+        <h4>💡 Как да четем условията?</h4>
+        <p>🟢 <strong>Идеални:</strong> Стабилно или леко спадащо ниво. Рибата е активна.</p>
+        <p>🟡 <strong>Променливи:</strong> Рязка промяна в нивото. Рибата променя местоположението си.</p>
+        <p>🔴 <strong>Лоши:</strong> Силно прииждане, мътна вода или прекалено високи температури.</p>
+    </div>
+
+    <div class="danube-actions">
+        <a href="{% url 'discover' %}" class="back-link">← Назад</a>
+    </div>
+</div>
+
+<style>
+    .danube-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 20px;
+        font-family: 'Arial', sans-serif;
+    }
+    .danube-title {
+        color: #1a3c34;
+        border-bottom: 3px solid #ffca28;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+    }
+    .danube-table-wrapper {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        overflow: hidden;
+    }
+    .danube-table { width: 100%;border-collapse: collapse; text-align: left;}
+    .danube-table thead tr { background-color: #1a3c34; color: white;}
+    .danube-table th { padding: 15px; font-weight: 600;}
+    .danube-table tbody tr { border-bottom: 1px solid #eee;transition: background-color 0.2s ease;}
+    .danube-table tbody tr:hover { background-color: #f9f9f9;}
+    .danube-table td { padding: 15px;}
+    .station-name { font-weight: bold; color: #333;}
+    .station-level { font-size: 1.1rem;}
+    .station-trend, .station-status { font-weight: bold;}
+    .station-temp { color: #666;}
+    .no-data { padding: 20px; text-align: center; color: #999;}
+    .danube-legend {
+        margin-top: 30px;
+        padding: 15px 20px;
+        background-color: #fcfcfc;
+        border-left: 4px solid #ffca28;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #555;
+    }
+    .danube-legend h4 { margin-top: 0; margin-bottom: 10px; color: #1a3c34;}
+    .danube-legend p { margin: 5px 0;}
+    .danube-actions { margin-top: 30px;}
+    .back-link { color: #1a3c34; font-weight: bold; text-decoration: none;}
+
+    /* -- Мобилни Устройства  -- */
+    @media screen and (max-width: 768px) {
+        
+        .danube-table-wrapper { background: transparent; box-shadow: none;}
+        .danube-table thead { display: none;}
+        .danube-table, .danube-table tbody, .danube-table tr { display: block; width: 100%;}
+        .danube-table tr {
+            background: white;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            border: 1px solid #eef1f0;
+        }
+        .danube-table td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5px;
+            border-bottom: 1px dashed #eee;
+            text-align: right;
+        }
+        .danube-table td.station-name {
+            display: block;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #1a3c34;
+            background-color: #f4f7f6;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-bottom: none;
+        }
+        .danube-table td:last-child { border-bottom: none;}
+        .danube-table td::before {
+            content: attr(data-label);
+            font-weight: bold;
+            color: #666;
+            text-align: left;
+        }
+        .danube-table td.station-name::before { content: "";}
+    }
+</style>
+{% endblock %}

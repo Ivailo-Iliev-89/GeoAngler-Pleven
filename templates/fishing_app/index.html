@@ -2,70 +2,177 @@
 {% block content %}
 {% load static %}
 
-{% if user.is_authenticated %}
-    <div class="mobile-search-container">
-        <a href="{% url 'discover' %}" class="btn-primary">
-            Find Fishing Adventures ...
-        </a>
-    </div>
-
-    <div id="places-anchor" class="places-grid">
-        {% for place in places %}
-            <div class="place-card">
-                <div class="place-image">
-                    {% if place.image %}
-                        <img src="{{ place.image.url }}" alt="{{ place.name }}">
-                    {% endif %}
-                    <span class="badge">{{ place.get_place_type_display }}</span>
-                </div>
-                <div class="place-info">
-                    <h3>{{ place.name }}</h3>
-                    <p>{{ place.description|truncatechars:100 }}</p>
-                    <div class="tags">
-                        {% for fish in place.fishes.all|slice:":3" %}
-                            <span class="fish-tag">🐟 {{ fish.name }}</span>
-                        {% endfor %}
-                    </div>
-                    <a href="{% url 'place_detail' place.slug %}" class="btn-more">More details</a>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-
-    <div class="pagination-controls"> 
-        <button id="prevBtn" class="btn-more" {% if not places.has_previous %}style="display: none;"{% endif %}>← Previous</button>
-        <span id="pageCounter">Page {{ places.number }}</span>
-        <button id="nextBtn" class="btn-more" {% if not places.has_next %}style="display: none;"{% endif %}>Next →</button>
-    </div>
-
-{% else %}
-    <div class="welcome-box">
-        <h1>Join the GeoAngler Community</h1>
-        <p class="welcome-lead">
-            Your ultimate guide to the best fishing spots in the Pleven region.<br/>
-            Discover new horizons for your favorite hobby.
-        </p>
-        
-        <div class="info-grid">
-            <div class="info-item">
-                <h3>Spots</h3>
-                <p>Rivers, lakes, and hidden swamps.</p>
-            </div>
-            <div class="info-item">
-                <h3>Tips</h3>
-                <p>Professional techniques and methods.</p>
-            </div>
-            <div class="info-item">
-                <h3>Social</h3>
-                <p>Share photos and your best catch.</p>
-            </div>
+<div class="welcome-box">
+    <h1>Добре Дошли в Плевен Фишинг !</h1>
+    <p class="welcome-lead">
+        Твоят краен пътеводител за риболов в Плевенския регион. Разгърни пълния потенциал на платформата:
+    </p>
+    
+    <div class="info-grid">
+        <div class="info-item">
+            <h3>Прогноза за времето</h3>
+            <p>Реални данни за Плевен и региона, съобразени с атмосферното налягане и вятъра.</p>
         </div>
-
-        <div class="auth-actions">
-            <a href="{% url 'login' %}" class="btn-primary">LOGIN</a>
-            <a href="{% url 'signup' %}" class="btn-more">SIGN UP</a>
+        <div class="info-item">
+            <h3>Локации и места</h3>
+            <p>Пълен списък с реки, язовири и скрити блата около теб с GPS координати.</p>
+        </div>
+        <div class="info-item">
+            <h3>Методи за риболов</h3>
+            <p>Конкретни техники, такъми и описания на методите за успех в нашите райони.</p>
+        </div>
+        <div class="info-item">
+            <h3>Нива на река Дунав</h3>
+            <p>Живи данни за воден стоеж и температури от с. Байкал до Белене и Свищов.</p>
+        </div>
+        <div class="info-item">
+            <h3>Репортажи и коментари</h3>
+            <p>Споделяй снимки на твоя най-добър улов, чети отчети и коментирай с колеги.</p>
         </div>
     </div>
-{% endif %}
+
+    <div class="auth-actions">
+        <a href="{% url 'login' %}" class="btn-primary">ВЛЕЗ</a>
+        <a href="{% url 'signup' %}" class="btn-more">РЕГИСТРИРАЙ СЕ</a>
+    </div>
+</div>
+
+<div class="gallery-wrapper">
+    <div class="marquee-track">
+     
+        <div class="location-card">
+            <img src="{% static 'images/baikal.jpg' %}" alt="с. Байкал">
+            <div class="location-name">с.  Байкал</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/vit.jpg' %}" alt="р. Вит">
+            <div class="location-name">р. Вит</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/nikopol.jpg' %}" alt="гр. Никопол">
+            <div class="location-name">гр. Никопол</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/zagrajden.jpg' %}" alt="с. Загражден">
+            <div class="location-name">с. Загражден</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/belene.jpg' %}" alt="гр. Белене">
+            <div class="location-name">гр. Белене</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/iskar.jpg' %}" alt="р. Искър">
+            <div class="location-name">р. Искър</div>
+        </div>
+
+        <!-- ВТОРО ЗАВЪРТАНЕ (ЗА БЕЗКРАЕН ЕФЕКТ) -->
+        <div class="location-card">
+            <img src="{% static 'images/baikal.jpg' %}" alt="с. Байкал">
+            <div class="location-name">с.  Байкал</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/vit.jpg' %}" alt="р. Вит">
+            <div class="location-name">р. Вит</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/nikopol.jpg' %}" alt="гр. Никопол">
+            <div class="location-name">гр. Никопол</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/zagrajden.jpg' %}" alt="с. Загражден">
+            <div class="location-name">с. Загражден</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/belene.jpg' %}" alt="гр. Белене">
+            <div class="location-name">гр. Белене</div>
+        </div>
+        <div class="location-card">
+            <img src="{% static 'images/iskar.jpg' %}" alt="р. Искър">
+            <div class="location-name">р. Искър</div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .welcome-box {
+        text-align: center;
+        padding: 50px 20px;
+        background: linear-gradient(180deg, #1a2639 0%, #121824 100%);
+        border-radius: 20px;
+        margin-bottom: 40px;
+        color: #fff;
+        border: 1px solid #233044;
+    }
+    .welcome-box h1 { font-size: 2.6rem; color: #ccff00; margin-bottom: 20px; font-weight: 800; text-transform: uppercase; }
+    .welcome-lead { font-size: 1.2rem; color: #a0aec0; margin-bottom: 40px; line-height: 1.6; }
+    
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto 45px auto;
+    }
+    .info-item {
+        background: #1e293b;
+        padding: 25px 20px;
+        border-radius: 15px;
+        border: 1px solid #334155;
+        transition: 0.3s;
+        text-align: center;
+    }
+    .info-item:hover {
+        transform: translateY(-5px);
+        border-color: #adff2f;
+        box-shadow: 0 5px 15px rgba(173, 255, 47, 0.15);
+    }
+    .info-icon { font-size: 2.3rem; margin-bottom: 12px; display: inline-block; }
+    .info-item h3 { color: #ccff00; font-size: 1.2rem; margin-bottom: 10px; font-weight: 600; }
+    .info-item p { color: #94a3b8; font-size: 0.9rem; line-height: 1.4; }
+
+    .auth-actions { display: flex; gap: 20px; justify-content: center; margin-bottom: 20px; }
+    .auth-actions .btn-primary { background-color: #ccff00; color: #121824; padding: 14px 40px; border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
+    .auth-actions .btn-primary:hover { background-color: #b3e600; transform: scale(1.05); }
+    .auth-actions .btn-more { border: 2px solid #adff2f; color: #adff2f; padding: 12px 38px; border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
+    .auth-actions .btn-more:hover { background: rgba(173, 255, 47, 0.1); }
+
+    /* БЕЗКРАЙНА ВЪРТЕЛЕЖКА */
+    .gallery-wrapper {
+        width: 100%;
+        margin-top: 30px;
+        overflow: hidden;
+        background: #1a2232;
+        padding: 20px 0;
+        border-top: 1px solid #2d3748;
+        border-bottom: 1px solid #2d3748;
+        border-radius: 15px;
+    }
+    .marquee-track {
+        display: flex;
+        width: calc(300px * 12);
+        animation: scroll 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    .location-card {
+        width: 260px;
+        margin: 0 20px;
+        background: #121824;
+        border-radius: 15px;
+        overflow: hidden;
+        text-align: center;
+        border: 3px solid #adff2f;
+        box-shadow: 0 4px 12px rgba(173, 255, 47, 0.15);
+        transition: 0.3s;
+    }
+    .location-card img { width: 100%; height: 150px; object-fit: cover; }
+    .location-name { padding: 10px; font-size: 1rem; font-weight: bold; color: #fff; }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-300px * 6)); }
+    }
+</style>
 
 {% endblock %}

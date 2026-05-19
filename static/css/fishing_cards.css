@@ -1,4 +1,4 @@
-/*-- Places at main page-- */
+/* -- Местата на Плейс_Детайл -- */
 .places-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -54,7 +54,23 @@
     padding: 15px;
 }
 
-/*-- Buttons --*/
+/* -- Значките за картичката на риболова -- */
+.badge-fish {
+    display: inline-block;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.badge-success { background-color: #2ecc71; }
+.badge-warning { background-color: #f1c40f; color: #333; }
+.badge-danger { background-color: #e74c3c; }
+.badge-secondary { background-color: #7f8c8d; }
+
+/* -- Вход и Регистрация ( Бутони ) -- */
 .btn-more {
     display: inline-block;
     margin-top: 10px;
@@ -110,7 +126,7 @@
 }
 .btn-more:hover {transform: translateX(5px);color:#ffca28;transition: all 0.3s ease-in-out;}
 
-/* --- MEDIA QUERIES --- */
+/* --- Мобилни устройства --- */
 @media (max-width: 768px) {
     .places-grid {grid-template-columns: 1fr; width: 100%; padding: 20px 10px;}
     .place-card {margin-bottom: 20px;}
